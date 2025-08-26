@@ -645,25 +645,28 @@ class Theme_Options {
 	 *
 	 * @return void
 	 */
-	public function wp_enqueue_scripts__load_apsc_custom_colours_admin_ui() {
-		
-		// include css file
-        wp_enqueue_style('apsc-option-style', plugins_url('/css/apsc-site-settings-admin.css', __FILE__ ));
-		
-		// load colour picker
-		wp_register_script('apsc-option-script', plugins_url('/js/apsc-site-settings-admin.js', __FILE__));
-		wp_enqueue_script('apsc-option-script');
-		
-	   $title_nonce = wp_create_nonce( 'apsc_option_script' );
-	   wp_localize_script(
-		  'apsc-option-script',
-		  'ajax_callback_get_unit_colours_obj',
-		  array(
-			 'ajax_url' => admin_url( 'admin-ajax.php' ),
-			 'nonce'    => $title_nonce,
-		  )
-	   );
+	public function wp_enqueue_scripts__load_apsc_custom_colours_admin_ui( $hook_suffix ) {
+		// only load scripts on theme options page
+		if($hook_suffix == 'appearance_page_theme_options' ){
+			// include css file
+			wp_enqueue_style('apsc-option-style', plugins_url('/css/apsc-site-settings-admin.css', __FILE__ ));
+			
+			// load colour picker
+			wp_register_script('apsc-option-script', plugins_url('/js/apsc-site-settings-admin.js', __FILE__));
+			wp_enqueue_script('apsc-option-script');
+			
+		   $title_nonce = wp_create_nonce( 'apsc_option_script' );
+		   wp_localize_script(
+			  'apsc-option-script',
+			  'ajax_callback_get_unit_colours_obj',
+			  array(
+				 'ajax_url' => admin_url( 'admin-ajax.php' ),
+				 'nonce'    => $title_nonce,
+			  )
+		   );
+		}
 	}
+	
 	/**
 	 * Load the custom colour selection for APSC options.
 	 *
