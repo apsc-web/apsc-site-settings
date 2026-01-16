@@ -93,17 +93,17 @@ class Theme_Options {
 		array(
 			'name'  => 'SALA Grey Primary',
 			'slug'  => 'apsc-unit-primary',
-			'color' => '#1D252D',
+			'color' => '#141F19',
 		),
 		array(
 			'name'  => 'SALA Grey Secondary',
 			'slug'  => 'apsc-unit-secondary',
-			'color' => '#5B6770',
+			'color' => '#19301C',
 		),
 		array(
 			'name'  => 'SALA Grey Tertiary',
 			'slug'  => 'apsc-unit-tertiary',
-			'color' => '#A2AAAD',
+			'color' => '#89C992',
 		),
 	);
 
