@@ -91,17 +91,17 @@ class Theme_Options {
 	 */
 	public $apsc_sala_palette = array(
 		array(
-			'name'  => 'SALA Grey Primary',
+			'name'  => 'SALA Green Primary',
 			'slug'  => 'apsc-unit-primary',
 			'color' => '#141F19',
 		),
 		array(
-			'name'  => 'SALA Grey Secondary',
+			'name'  => 'SALA Green Secondary',
 			'slug'  => 'apsc-unit-secondary',
 			'color' => '#19301C',
 		),
 		array(
-			'name'  => 'SALA Grey Tertiary',
+			'name'  => 'SALA Green Tertiary',
 			'slug'  => 'apsc-unit-tertiary',
 			'color' => '#89C992',
 		),
