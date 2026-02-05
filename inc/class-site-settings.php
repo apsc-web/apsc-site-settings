@@ -14,6 +14,7 @@ namespace UBC\APSC\Site_Settings;
  * @class   Site_Settings
  */
 class Site_Settings {
+	const SVG_GRAPHIC_PATH = WP_PLUGIN_URL . '/apsc-site-settings/inc/graphics/';
 
 	/**
 	 * Colour palette for APSC default (blue)
@@ -62,6 +63,15 @@ class Site_Settings {
 	);
 
 	/**
+	 * SVG Feature for APSC
+	 *
+	 * @var array
+	 */
+	public $apsc_apsc_svg_feature = array(
+			'feature' => 'url("' . Site_Settings::SVG_GRAPHIC_PATH . 'apsc.svg")',
+	);
+
+	/**
 	 * Colour palette for APSC Engineering (red)
 	 *
 	 * @var array
@@ -91,20 +101,29 @@ class Site_Settings {
 	 */
 	public $apsc_engineering_gradients = array(
 		array(
-			'name'     => 'APSC Primary To Transparent From Bottom',
+			'name'     => 'Engineering Primary To Transparent From Bottom',
 			'slug'     => 'apsc-unit-primary-to-transparent-from-bottom',
 			'gradient' => 'linear-gradient(transparent 50%,rgba(66,25,46,.8) 80%)',
 		),
 		array(
-			'name'     => 'APSC Primary to Secondary From Top Right',
+			'name'     => 'Engineering Primary to Secondary From Top Right',
 			'slug'     => 'apsc-unit-primary-to-secondary-from-top-right',
 			'gradient' => 'linear-gradient(to right top, #a6192e, #ae172e, #b7152e, #bf132e, #c8102e)',
 		),
 		array(
-			'name'     => 'APSC Freeform (3-color)',
+			'name'     => 'Engineering Freeform (3-color)',
 			'slug'     => 'apsc-freeform-3-color',
 			'gradient' => 'linear-gradient(to right top, #a6192e, #ac182e, #b2162e, #b9152e, #bf132e, #c4142d, #c8152b, #cd162a, #d01b27, #d42024, #d72420, #da291c)',
 		),
+	);
+
+	/**
+	 * SVG Feature for Engineering
+	 *
+	 * @var array
+	 */
+	public $apsc_engineering_svg_feature = array(
+			'feature' => 'url("' . Site_Settings::SVG_GRAPHIC_PATH . 'engineering.svg")',
 	);
 
 	/**
@@ -127,7 +146,7 @@ class Site_Settings {
 			'name'  => 'Nursing Purple Tertiary',
 			'slug'  => 'apsc-unit-tertiary',
 			'color' => '#6D2077',
-		),
+		),		
 	);
 
 	/**
@@ -137,42 +156,51 @@ class Site_Settings {
 	 */
 	public $apsc_nursing_gradients = array(
 		array(
-			'name'     => 'APSC Primary To Transparent From Bottom',
+			'name'     => 'Nursing Primary To Transparent From Bottom',
 			'slug'     => 'apsc-unit-primary-to-transparent-from-bottom',
 			'gradient' => 'linear-gradient(transparent 50%,rgba(51,0,114,.8) 80%)',
 		),
 		array(
-			'name'     => 'APSC Primary to Secondary From Top Right',
+			'name'     => 'Nursing Primary to Secondary From Top Right',
 			'slug'     => 'apsc-unit-primary-to-secondary-from-top-right',
 			'gradient' => 'linear-gradient(to right top, #330072, #3d0d76, #47187a, #4f227f, #582c83)',
 		),
 		array(
-			'name'     => 'APSC Freeform (3-color)',
+			'name'     => 'Nursing Freeform (3-color)',
 			'slug'     => 'apsc-freeform-3-color',
 			'gradient' => 'linear-gradient(to right top, #330072, #3b0975, #421378, #481b7c, #4f227f, #54247f, #592780, #5e2980, #62277e, #66257c, #6a2279, #6d2077)',
 		),
 	);
 
 	/**
-	 * Colour palette for APSC SALA (grey)
+	 * SVG Feature for Nursing
+	 *
+	 * @var array
+	 */
+	public $apsc_nursing_svg_feature = array(
+			'feature' => 'url("' . Site_Settings::SVG_GRAPHIC_PATH . 'nursing.svg")',
+	);
+
+	/**
+	 * Colour palette for APSC SALA (green)
 	 *
 	 * @var array
 	 */
 	public $apsc_sala_palette = array(
 		array(
-			'name'  => 'SALA Grey Primary',
+			'name'  => 'SALA Green Primary',
 			'slug'  => 'apsc-unit-primary',
-			'color' => '#1D252D',
+			'color' => '#141F19',
 		),
 		array(
-			'name'  => 'SALA Grey Secondary',
+			'name'  => 'SALA Green Secondary',
 			'slug'  => 'apsc-unit-secondary',
-			'color' => '#5B6770',
+			'color' => '#19301C',
 		),
 		array(
-			'name'  => 'SALA Grey Tertiary',
+			'name'  => 'SALA Green Tertiary',
 			'slug'  => 'apsc-unit-tertiary',
-			'color' => '#A2AAAD',
+			'color' => '#89C992',
 		),
 	);
 
@@ -183,20 +211,29 @@ class Site_Settings {
 	 */
 	public $apsc_sala_gradients = array(
 		array(
-			'name'     => 'APSC Primary To Transparent From Bottom',
+			'name'     => 'SALA Primary To Transparent From Bottom',
 			'slug'     => 'apsc-unit-primary-to-transparent-from-bottom',
-			'gradient' => 'linear-gradient(transparent 50%,rgba(29,37,45,.8) 80%)',
+			'gradient' => 'linear-gradient(transparent 50%,rgba(20,31,25,.8) 80%)',
 		),
 		array(
-			'name'     => 'APSC Primary to Secondary From Top Right',
+			'name'     => 'SALA Primary to Secondary From Top Right',
 			'slug'     => 'apsc-unit-primary-to-secondary-from-top-right',
-			'gradient' => 'linear-gradient(to right top, #1d252d, #2c343d, #3b454d, #4b565e, #5b6770)',
+			'gradient' => 'linear-gradient(to right top, #141F19, #15231A, #17271B, #182C1B, #19301C)',
 		),
 		array(
-			'name'     => 'APSC Freeform (3-color)',
+			'name'     => 'SALA Freeform (3-color)',
 			'slug'     => 'apsc-freeform-3-color',
-			'gradient' => 'linear-gradient(to right top, #1d252d, #283139, #333d45, #3f4951, #4b565e, #566169, #616c74, #6c777f, #79848a, #869096, #949da1, #a2aaad)',
+			'gradient' => 'linear-gradient(to right top, #141F19, #1D2C23, #273A2C, #314837, #3B5741, #45664C, #507657, #5B8662, #66966E, #72A77A, #7DB886, #89C992)',
 		),
+	);
+
+	/**
+	 * SVG Feature for SALA
+	 *
+	 * @var array
+	 */
+	public $apsc_sala_svg_feature = array(
+			'feature' => 'url("' . Site_Settings::SVG_GRAPHIC_PATH . 'sala.svg")',
 	);
 
 	/**
@@ -229,20 +266,29 @@ class Site_Settings {
 	 */
 	public $apsc_scarp_gradients = array(
 		array(
-			'name'     => 'APSC Primary To Transparent From Bottom',
+			'name'     => 'SCARP Primary To Transparent From Bottom',
 			'slug'     => 'apsc-unit-primary-to-transparent-from-bottom',
 			'gradient' => 'linear-gradient(transparent 50%,rgba(220,68,5,.8) 80%)',
 		),
 		array(
-			'name'     => 'APSC Primary to Secondary From Top Right',
+			'name'     => 'SCARP Primary to Secondary From Top Right',
 			'slug'     => 'apsc-unit-primary-to-secondary-from-top-right',
 			'gradient' => 'linear-gradient(to right top, #dc4405, #de4805, #e04b05, #e14f05, #e35205)',
 		),
 		array(
-			'name'     => 'APSC Freeform (3-color)',
+			'name'     => 'SCARP Freeform (3-color)',
 			'slug'     => 'apsc-freeform-3-color',
 			'gradient' => 'linear-gradient(to right top, #dc4405, #dd4705, #df4a05, #e04c05, #e14f05, #e35503, #e45b01, #e66100, #e86c00, #ea7700, #ec8100, #ed8b00)',
 		),
+	);
+
+	/**
+	 * SVG Feature for SCARP
+	 *
+	 * @var array
+	 */
+	public $apsc_scarp_svg_feature = array(
+			'feature' => 'url("' . Site_Settings::SVG_GRAPHIC_PATH . 'scarp.svg")',
 	);
 
 	/**
@@ -264,6 +310,10 @@ class Site_Settings {
 
 		// Add the unit-specific gradient.
 		add_filter( 'wp_theme_json_data_default', array( $this, 'wp_theme_json_data_default__adjust_gradients' ) );
+
+		// Add the unit-specific SVG feature.
+		add_filter( 'wp_theme_json_data_default', array( $this, 'wp_theme_json_data_default__adjust_svg_feature' ) );
+		
 	}//end __construct()
 
 	/**
@@ -381,6 +431,47 @@ class Site_Settings {
 		// Set the new json.
 		return $theme_json->update_with( $current_json );
 	}//end wp_theme_json_data_default__adjust_gradients()
+
+
+	/**
+	 * Modify the theme.json to add the unit's SVG graphical feature. We add a new custom theme setting to create a
+	 * CSS variable with the path to the unit-specific feature.
+	 *
+	 * @since 1.2.0
+	 * @param object $theme_json The original theme JSON data.
+	 * @return object The modified theme JSON data.
+	 */
+	public function wp_theme_json_data_default__adjust_svg_feature( $theme_json ) {
+
+		// The existing json.
+		$current_json = $theme_json->get_data();
+
+		// Bail if the json doesn't exist.
+		if ( empty( $current_json ) ) {
+			return $theme_json;
+		}
+
+		// Not keeping any defaults for now, but have this here for easier change in future.
+		$defaults_to_keep = array();
+
+		// Which svg feature should we keep?
+		$selected_unit = $this->get_selected_unit();
+
+		// Now convert unit to the correct svg feature.
+		$unit_svg_feature_key = 'apsc_' . $selected_unit . '_svg_feature';
+
+		// Now grab this from this class's properties.
+		$unit_svg_feature = $this->{$unit_svg_feature_key};
+
+		// Now merge in the unit's svg feature.
+		$new_svg_feature = array_merge( $unit_svg_feature, $defaults_to_keep );
+
+		// Set the new svg feature.
+		$current_json['settings']['custom']['svg'] = $new_svg_feature;
+		
+		// Set the new json.
+		return $theme_json->update_with( $current_json );
+	}//end wp_theme_json_data_default__adjust_svg_feature()
 
 	/**
 	 * Get the selected unit from the theme's options.
