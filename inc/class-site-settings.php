@@ -14,7 +14,7 @@ namespace UBC\APSC\Site_Settings;
  * @class   Site_Settings
  */
 class Site_Settings {
-	const SVG_GRAPHIC_PATH = WP_PLUGIN_URL . '/apsc-site-settings/inc/graphics/';
+	private $plugin_url;
 
 	/**
 	 * Colour palette for APSC default (blue)
@@ -67,9 +67,7 @@ class Site_Settings {
 	 *
 	 * @var array
 	 */
-	public $apsc_apsc_svg_feature = array(
-			'feature' => 'url("' . Site_Settings::SVG_GRAPHIC_PATH . 'apsc.svg")',
-	);
+	public $apsc_apsc_svg_feature = 'apsc.svg';
 
 	/**
 	 * Colour palette for APSC Engineering (red)
@@ -122,9 +120,7 @@ class Site_Settings {
 	 *
 	 * @var array
 	 */
-	public $apsc_engineering_svg_feature = array(
-			'feature' => 'url("' . Site_Settings::SVG_GRAPHIC_PATH . 'engineering.svg")',
-	);
+	public $apsc_engineering_svg_feature = 'engineering.svg';
 
 	/**
 	 * Colour palette for APSC Nursing (purple)
@@ -177,9 +173,7 @@ class Site_Settings {
 	 *
 	 * @var array
 	 */
-	public $apsc_nursing_svg_feature = array(
-			'feature' => 'url("' . Site_Settings::SVG_GRAPHIC_PATH . 'nursing.svg")',
-	);
+	public $apsc_nursing_svg_feature = 'nursing.svg';
 
 	/**
 	 * Colour palette for APSC SALA (green)
@@ -232,9 +226,7 @@ class Site_Settings {
 	 *
 	 * @var array
 	 */
-	public $apsc_sala_svg_feature = array(
-			'feature' => 'url("' . Site_Settings::SVG_GRAPHIC_PATH . 'sala.svg")',
-	);
+	public $apsc_sala_svg_feature = 'sala.svg';
 
 	/**
 	 * Colour palette for APSC SCARP (orange)
@@ -287,9 +279,7 @@ class Site_Settings {
 	 *
 	 * @var array
 	 */
-	public $apsc_scarp_svg_feature = array(
-			'feature' => 'url("' . Site_Settings::SVG_GRAPHIC_PATH . 'scarp.svg")',
-	);
+	public $apsc_scarp_svg_feature = 'scarp.svg';
 
 	/**
 	 * Set up our actions and filters.
@@ -305,6 +295,11 @@ class Site_Settings {
 			return;
 		}
 
+		// Get the URL directory path (with trailing slash) for the plugin
+		$this->plugin_url = plugin_dir_url( __FILE__ );
+
+		add_action( 'init', array( $this, 'get_svg_url' ) );
+
 		// Add the unit-specific colours.
 		add_filter( 'wp_theme_json_data_default', array( $this, 'wp_theme_json_data_default__adjust_colour_palette' ) );
 
@@ -315,6 +310,13 @@ class Site_Settings {
 		add_filter( 'wp_theme_json_data_default', array( $this, 'wp_theme_json_data_default__adjust_svg_feature' ) );
 		
 	}//end __construct()
+
+	/*
+	* Return the URL of the SVG file
+	*/
+	public function get_svg_url($svg_file) {
+		return $this->plugin_url . 'graphics/'. $svg_file; 
+	}
 
 	/**
 	 * Modify the theme JSON data by updating the theme's color
@@ -460,8 +462,10 @@ class Site_Settings {
 		// Now convert unit to the correct svg feature.
 		$unit_svg_feature_key = 'apsc_' . $selected_unit . '_svg_feature';
 
-		// Now grab this from this class's properties.
-		$unit_svg_feature = $this->{$unit_svg_feature_key};
+		// Generate the SVG feature CSS variable.
+		$unit_svg_feature = array(
+			'feature' => 'url("' . $this->get_svg_url($this->{$unit_svg_feature_key}) . '")',
+		);
 
 		// Now merge in the unit's svg feature.
 		$new_svg_feature = array_merge( $unit_svg_feature, $defaults_to_keep );
